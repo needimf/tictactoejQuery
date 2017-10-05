@@ -7,11 +7,17 @@ $(function() {
   /*----- event listeners -----*/
   $('table').on('click', 'td', handleClick)
 
+  $('.reset').on('click', function() {
+    $('.message').html('Welcome, Player X plays first')
+    init();
+  })
+
   /*----- functions -----*/
   function init() {
     state = new Array(9);
     state.fill(null);
     player = 'X';
+    winner = null;
 
     render();
   }
@@ -19,9 +25,9 @@ $(function() {
   function render() {
     state.forEach(function(elem, idx) {
       var $currentSquare = $(`#${idx}`);
-      if (elem) {
-        $currentSquare.html(elem);
-      }
+      
+      $currentSquare.html(elem);
+      
     });
   }
 
